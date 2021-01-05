@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "8080:80"
+  db:
+    image: mysql
+    ports:
+    - "3306:3306"
+    environment:
+    - MYSQL_ROOT_PASSWORD=password
+    - MYSQL_USER=user
+    - MYSQL_PASSWORD=password
+    - MYSQL_DATABASE=demodb
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - $HOME/nginx:/var/nginx_home 
+    - $HOME/nginx:/var/nginx_home/downloads 
+    - /usr/bin/docker:/usr/bin/docker 
